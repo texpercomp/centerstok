@@ -1,135 +1,155 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Giriş Ekranı</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
-      position: relative;
-      min-height: 100vh;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Giriş Ekranı</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #ffffff;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-    .container {
-      max-width: 400px;
-      margin: 0 auto;
-      padding: 30px 20px 60px;
-      text-align: center;
-    }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            flex: 1;
+        }
 
-    .logo {
-      width: 80px;
-      height: auto;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
+        .logo {
+            width: 75%;
+            max-width: 300px;
+            height: auto;
+            margin-bottom: -30px;
+            display: block;
+        }
 
-    .center-gross {
-      font-size: 20px;
-      color: #333;
-      font-weight: bold;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-    }
+        h1 {
+            font-size: 22px;
+            color: #333;
+            font-weight: bold;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #0288d1;
+            padding-bottom: 10px;
+        }
 
-    h1 {
-      font-size: 26px;
-      color: #0288d1;
-      font-weight: bold;
-      margin-bottom: 15px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border-bottom: 2px solid #0288d1;
-      padding-bottom: 10px;
-    }
+        .note {
+            font-size: 14px;
+            color: #888;
+            margin-top: 10px;
+            font-style: italic;
+        }
 
-    .note {
-      font-size: 14px;
-      color: #888;
-      margin-top: 10px;
-      font-style: italic;
-    }
+        .button {
+            display: block;
+            width: 80%;
+            max-width: 320px;
+            margin: 12px auto;
+            padding: 14px;
+            background-color: #000;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: background 0.3s, transform 0.2s;
+        }
 
-    .button {
-      display: block;
-      width: 80%;
-      max-width: 320px;
-      margin: 12px auto;
-      padding: 14px;
-      background-color: #0288d1;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 18px;
-      text-decoration: none;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-      transition: background 0.3s, transform 0.2s;
-    }
+        .button:hover {
+            background-color: #333;
+            transform: scale(1.03);
+        }
 
-    .button:hover {
-      background-color: #0277bd;
-      transform: scale(1.03);
-    }
+        .footer {
+            text-align: center;
+            font-size: 13px;
+            padding: 10px;
+            background-color: #fff;
+            margin-top: 6em; /* 6 satır aşağı indir (önceki 4 + 2) */
+        }
 
-    .footer {
-      position: absolute;
-      right: 10px;
-      bottom: 10px;
-      font-size: 13px;
-    }
+        .footer a {
+            color: #000;
+            font-weight: bold;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
 
-    .footer a {
-      color: #000;
-      font-weight: bold;
-      text-decoration: none;
-      position: relative;
-      display: inline-block;
-      overflow: hidden;
-    }
+        .footer a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            animation: shine 2.5s infinite;
+        }
 
-    .footer a::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-      animation: shine 2.5s infinite;
-    }
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
 
-    @keyframes shine {
-      0% {
-        left: -100%;
-      }
-      100% {
-        left: 100%;
-      }
-    }
-  </style>
+        /* Responsive Tasarım: Telefonlar için */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            .button {
+                font-size: 16px;
+                padding: 12px;
+            }
+
+            .footer a {
+                font-size: 12px;
+            }
+        }
+
+        /* Daha geniş ekranlar için (tablet vb.) */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 22px;
+            }
+
+            .button {
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <img src="logo.jpg" alt="Logo" class="logo">
-
-    <!-- Center Gross Yazısı -->
-    <div class="center-gross">Center Gross</div>
-
-    <h1>Stok Sorgulama</h1>
-
-    <p class="note">Eğer bir giriş çalışmazsa, lütfen diğerini deneyin.</p>
-
-    <a href="http://212.156.174.165/Account/Login" class="button">Giriş 1</a>
-    <a href="http://88.235.17.55/Account/Login" class="button">Giriş 2</a>
-  </div>
-
-  <div class="footer">
-    <a href="https://texper.com.tr" target="_blank">Powered by Texper</a>
-  </div>
+    <div class="container">
+        <img src="logo.jpg" alt="Logo" class="logo">
+        <h1>Stok Sorgulama</h1>
+        <p class="note">Eğer bir giriş çalışmazsa, lütfen diğerini deneyin.</p>
+        <a href="http://212.156.174.165/Account/Login" class="button">Giriş 1</a>
+        <a href="http://88.235.17.55/Account/Login" class="button">Giriş 2</a>
+        <a href="#" class="button">Giriş 3</a>
+        <div class="footer">
+            <a href="https://texper.com.tr" target="_blank">Powered by Texper</a>
+        </div>
+    </div>
 </body>
 </html>
